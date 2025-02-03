@@ -12,14 +12,19 @@ module.exports = {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
 				ring: "hsl(var(--ring))",
-				background: "hsl(var(--background))",
+				background: {
+					DEFAULT: "var(--color-background)",
+					offset: "var(--color-background-offset)",
+				},
 				foreground: "hsl(var(--foreground))",
 				primary: {
-					DEFAULT: "hsl(var(--primary))",
+					DEFAULT: "var(--color-primary)",
+					hover: "var(--color-primary-hover)",
 					foreground: "hsl(var(--primary-foreground))",
 				},
 				secondary: {
-					DEFAULT: "hsl(var(--secondary))",
+					DEFAULT: "var(--color-secondary)",
+					hover: "var(--color-secondary-hover)",
 					foreground: "hsl(var(--secondary-foreground))",
 				},
 				destructive: {
@@ -45,10 +50,6 @@ module.exports = {
 				text: {
 					DEFAULT: "var(--color-text)",
 					offset: "var(--color-text-offset)",
-				},
-				background: {
-					DEFAULT: "var(--color-background)",
-					offset: "var(--color-background-offset)",
 				},
 			},
 			borderRadius: {
