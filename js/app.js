@@ -122,7 +122,7 @@ function createProductElement(product) {
 	const isInWishlist = state.wishlist.some((item) => item.id === product.id);
 	const productElement = document.createElement("div");
 	productElement.className =
-		"bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 flex flex-col justify-between h-full";
+		"bg-gray-200 dark:bg-gray-800 rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 flex flex-col justify-between h-full";
 	productElement.innerHTML = `
     <div>
       <img src="${product.image}" alt="${
@@ -130,7 +130,7 @@ function createProductElement(product) {
 	}" class="w-full h-48 object-cover rounded-lg mb-4 cursor-pointer" onclick="showProductDetails(${
 		product.id
 	})">
-      <h3 class="font-semibold text-lg mb-2 text-gray-800 dark:text-white">${
+      <h3 class="font-semibold text-lg mb-2 text-gray-800 dark:text-gray-50">${
 				product.title
 			}</h3>
       <p class="text-gray-600 dark:text-gray-300 mb-2">${product.description.slice(
@@ -140,11 +140,11 @@ function createProductElement(product) {
     </div>
     <div>
       <div class="flex justify-between items-center mb-4">
-        <span class="font-bold text-xl text-gray-800 dark:text-white">$${product.price.toFixed(
+        <span class="font-bold text-xl text-gray-800 dark:text-gray-50">$${product.price.toFixed(
 					2
 				)}</span>
         <div class="flex space-x-2">
-          <button class="add-to-cart p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300" data-id="${
+          <button class="add-to-cart p-2 bg-blue-500 text-gray-50 rounded-full hover:bg-blue-600 transition duration-300" data-id="${
 						product.id
 					}">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -181,7 +181,7 @@ function showProductDetails(productId) {
 	updateBreadcrumbs();
 
 	const content = `
-    <div class="flex flex-col md:flex-row bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+    <div class="flex flex-col md:flex-row bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
       <img src="${product.image}" alt="${
 		product.title
 	}" class="w-full md:w-1/2 h-64 md:h-auto object-cover">
