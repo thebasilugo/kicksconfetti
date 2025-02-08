@@ -187,17 +187,17 @@ function showProductDetails(productId) {
 	}" class="w-full md:w-1/2 h-64 md:h-auto object-cover">
       <div class="p-6 flex flex-col justify-between">
         <div>
-          <h2 class="text-2xl font-bold mb-2 dark:text-white">${
+          <h2 class="text-2xl font-bold mb-2 dark:text-gray-50">${
 						product.title
 					}</h2>
           <p class="text-gray-600 dark:text-gray-300 mb-4">${
 						product.description
 					}</p>
-          <p class="text-xl font-bold mb-4 dark:text-white">$${product.price.toFixed(
+          <p class="text-xl font-bold mb-4 dark:text-gray-50">$${product.price.toFixed(
 						2
 					)}</p>
           <div class="mb-4">
-            <h3 class="font-semibold mb-2 dark:text-white">Colors:</h3>
+            <h3 class="font-semibold mb-2 dark:text-gray-50">Colors:</h3>
             <div class="flex space-x-2">
               ${product.colors
 								.map(
@@ -209,12 +209,12 @@ function showProductDetails(productId) {
             </div>
           </div>
           <div class="mb-4">
-            <h3 class="font-semibold mb-2 dark:text-white">Sizes:</h3>
+            <h3 class="font-semibold mb-2 dark:text-gray-50">Sizes:</h3>
             <div class="flex flex-wrap gap-2">
               ${product.sizes
 								.map(
 									(size) => `
-                <button class="px-3 py-1 border dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 dark:text-white">${size}</button>
+                <button class="px-3 py-1 border dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 dark:text-gray-50">${size}</button>
               `
 								)
 								.join("")}
@@ -222,7 +222,7 @@ function showProductDetails(productId) {
           </div>
         </div>
         <div class="mt-6">
-          <button class="add-to-cart bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300" data-id="${
+          <button class="add-to-cart bg-blue-500 text-gray-50 px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300" data-id="${
 						product.id
 					}">Add to Cart</button>
         </div>
