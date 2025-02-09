@@ -304,14 +304,14 @@ function renderCartItems() {
           <button class="decrease-quantity bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300 px-2 py-1 rounded-l-md" data-id="${
 						item.id
 					}">-</button>
-          <span class="bg-white dark:bg-gray-800 px-3 py-1">${
+          <span class="bg-gray-50 dark:bg-gray-800 px-3 py-1">${
 						item.quantity
 					}</span>
           <button class="increase-quantity bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300 px-2 py-1 rounded-r-md" data-id="${
 						item.id
 					}">+</button>
         </div>
-        <span class="font-bold mr-4 dark:text-white">$${(
+        <span class="font-bold mr-4 dark:text-gray-50">$${(
 					item.price * item.quantity
 				).toFixed(2)}</span>
         <button class="remove-from-cart text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-600" data-id="${
@@ -466,7 +466,7 @@ async function renderPage(pageId) {
 				content = renderCheckoutPage();
 				break;
 			default:
-				content = "<p class='dark:text-white'>Page not found</p>";
+				content = "<p class='dark:text-gray-50'>Page not found</p>";
 		}
 		elements.pageContent.innerHTML = content;
 		if (pageId === "contact") {
@@ -491,19 +491,19 @@ async function renderHomePage() {
 	const promotions = await getPromotions(4);
 
 	return `
-    <section id="hero" class="mb-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20 px-4 rounded-lg">
+    <section id="hero" class="mb-12 bg-gradient-to-r from-blue-500 to-red-600 text-gray-50 py-20 px-4 rounded-lg">
       <div class="container mx-auto text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-4">Welcome to KicksConfetti</h1>
         <p class="text-xl mb-8">Discover the latest trends in sneakers and sportswear</p>
-        <a href="#featured-products" class="bg-white text-blue-500 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Shop Now</a>
+        <a href="#featured-products" class="bg-gray-50 text-gray-800 py-2 px-6 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Shop Now</a>
       </div>
     </section>
     <section id="daily-deal" class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 dark:text-white">Daily Deals</h2>
+      <h2 class="text-2xl font-bold mb-6 dark:text-gray-50">Daily Deals</h2>
       ${renderDailyDeals()}
     </section>
-    <section id="featured-products" class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 dark:text-white">Featured Products</h2>
+    <section id="featured-products" class="pt-20 mb-12">
+      <h2 class="text-2xl font-bold mb-6 dark:text-gray-50">Featured Products</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         ${featuredProducts
 					.map((product) => createProductElement(product).outerHTML)
@@ -511,7 +511,7 @@ async function renderHomePage() {
       </div>
     </section>
     <section id="new-arrivals" class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 dark:text-white">New Arrivals</h2>
+      <h2 class="text-2xl font-bold mb-6 dark:text-gray-50">New Arrivals</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         ${newArrivals
 					.map((product) => createProductElement(product).outerHTML)
@@ -519,7 +519,7 @@ async function renderHomePage() {
       </div>
     </section>
     <section id="promotions" class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 dark:text-white">Special Promotions</h2>
+      <h2 class="text-2xl font-bold mb-6 dark:text-gray-50">Special Promotions</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         ${promotions
 					.map((product) => createProductElement(product).outerHTML)
@@ -534,7 +534,7 @@ async function renderShopPage() {
 	const displayedProducts = allProducts.slice(0, 6);
 
 	return `
-    <h1 class="text-3xl font-bold mb-6 dark:text-white">Shop All Products</h1>
+    <h1 class="text-3xl font-bold mb-6 dark:text-gray-50">Shop All Products</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       ${displayedProducts
 				.map((product) => createProductElement(product).outerHTML)
@@ -545,7 +545,7 @@ async function renderShopPage() {
 
 async function renderWishlistPage() {
 	return `
-    <h1 class="text-3xl font-bold mb-6 dark:text-white">Your Wishlist</h1>
+    <h1 class="text-3xl font-bold mb-6 dark:text-gray-50">Your Wishlist</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       ${
 				state.wishlist.length > 0
@@ -560,8 +560,8 @@ async function renderWishlistPage() {
 
 function renderAboutPage() {
 	return `
-    <h1 class="text-3xl font-bold mb-6 dark:text-white">About KicksConfetti</h1>
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h1 class="text-3xl font-bold mb-6 dark:text-gray-50">About KicksConfetti</h1>
+    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-6">
       <p class="mb-4 dark:text-gray-300">KicksConfetti is your ultimate destination for premium sports merchandise. We offer a wide range of high-quality products including sneakers, jerseys, caps, socks, and more!</p>
       <p class="mb-4 dark:text-gray-300">Our mission is to provide sports enthusiasts with the best gear to support their favorite teams and athletes. We pride ourselves on our extensive selection, competitive prices, and exceptional customer service.</p>
       <p class="dark:text-gray-300">Founded in 2023, KicksConfetti has quickly become a go-to source for sports fans around the world. We're constantly updating our inventory to bring you the latest and greatest in sports fashion and equipment.</p>
@@ -571,23 +571,23 @@ function renderAboutPage() {
 
 function renderContactPage() {
 	return `
-    <h1 class="text-3xl font-bold mb-6 dark:text-white">Contact Us</h1>
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h1 class="text-3xl font-bold mb-6 dark:text-gray-50">Contact Us</h1>
+    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-6">
       <p class="mb-4 dark:text-gray-300">We'd love to hear from you! Whether you have a question about a product, need help with an order, or just want to say hello, don't hesitate to reach out.</p>
       <form id="contact-form" class="space-y-4">
         <div>
-          <label for="name" class="block mb-1 dark:text-white">Name</label>
-          <input type="text" id="name" name="name" required class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <label for="name" class="block mb-1 dark:text-gray-50">Name</label>
+          <input type="text" id="name" name="name" required class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
         </div>
         <div>
-          <label for="email" class="block mb-1 dark:text-white">Email</label>
-          <input type="email" id="email" name="email" required class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <label for="email" class="block mb-1 dark:text-gray-50">Email</label>
+          <input type="email" id="email" name="email" required class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
         </div>
         <div>
-          <label for="message" class="block mb-1 dark:text-white">Message</label>
-          <textarea id="message" name="message" required rows="4" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+          <label for="message" class="block mb-1 dark:text-gray-50">Message</label>
+          <textarea id="message" name="message" required rows="4" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50"></textarea>
         </div>
-        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Send Message</button>
+        <button type="submit" class="bg-blue-500 text-gray-50 py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Send Message</button>
       </form>
     </div>
   `;
@@ -595,56 +595,56 @@ function renderContactPage() {
 
 function renderCheckoutPage() {
 	return `
-    <h1 class="text-3xl font-bold mb-6 dark:text-white">Checkout</h1>
+    <h1 class="text-3xl font-bold mb-6 dark:text-gray-50">Checkout</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-semibold mb-4 dark:text-white">Your Items</h2>
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4 dark:text-gray-50">Your Items</h2>
         ${state.cart
 					.map(
 						(item) => `
             <div class="flex justify-between items-center mb-2 p-2 bg-gray-100 dark:bg-gray-700 rounded">
-              <span class="font-medium dark:text-white">${item.title} (x${
+              <span class="font-medium dark:text-gray-50">${item.title} (x${
 							item.quantity
 						})</span>
-              <span class="font-bold dark:text-white">$${(
+              <span class="font-bold dark:text-gray-50">$${(
 								item.price * item.quantity
 							).toFixed(2)}</span>
             </div>
           `
 					)
 					.join("")}
-        <div class="font-bold mt-4 text-xl dark:text-white">Total: $${calculateCartTotal(
+        <div class="font-bold mt-4 text-xl dark:text-gray-50">Total: $${calculateCartTotal(
 					state.cart
 				).toFixed(2)}</div>
       </div>
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-        <h2 class="text-2xl font-semibold mb-4 dark:text-white">Shipping Information</h2>
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4 dark:text-gray-50">Shipping Information</h2>
         <form id="checkout-form" class="space-y-4">
           <div>
-            <label for="name" class="block mb-1 font-medium dark:text-white">Name</label>
+            <label for="name" class="block mb-1 font-medium dark:text-gray-50">Name</label>
             <input type="text" id="name" name="name" value="${
 							state.user.name
-						}" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+						}" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
           </div>
           <div>
-            <label for="email" class="block mb-1 font-medium dark:text-white">Email</label>
+            <label for="email" class="block mb-1 font-medium dark:text-gray-50">Email</label>
             <input type="email" id="email" name="email" value="${
 							state.user.email
-						}" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+						}" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
           </div>
           <div>
-            <label for="address" class="block mb-1 font-medium dark:text-white">Address</label>
-            <textarea id="address" name="address" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">${
+            <label for="address" class="block mb-1 font-medium dark:text-gray-50">Address</label>
+            <textarea id="address" name="address" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">${
 							state.user.address
 						}</textarea>
           </div>
           <div>
-            <label for="phone" class="block mb-1 font-medium dark:text-white">Phone</label>
+            <label for="phone" class="block mb-1 font-medium dark:text-gray-50">Phone</label>
             <input type="tel" id="phone" name="phone" value="${
 							state.user.phone
-						}" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+						}" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
           </div>
-          <button type="submit" class="w-full bg-blue-500 text-white py-3 px-4 rounded-md hover:bg-blue-600 transition duration-300 font-bold text-lg">Place Order</button>
+          <button type="submit" class="w-full bg-blue-500 text-gray-50 py-3 px-4 rounded-md hover:bg-blue-600 transition duration-300 font-bold text-lg">Place Order</button>
         </form>
       </div>
     </div>
@@ -663,7 +663,7 @@ function renderDailyDeals() {
       ${deals
 				.map(
 					(deal) => `
-        <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-6 shadow-lg">
+        <div class="bg-gradient-to-r from-blue-500 to-red-700 text-gray-50 rounded-lg p-6 shadow-lg">
           <h3 class="text-xl font-boldmb-4">${deal.product.title}</h3>
           <img src="${deal.product.image}" alt="${
 						deal.product.title
@@ -675,7 +675,7 @@ function renderDailyDeals() {
 						(1 - deal.discountPercentage / 100)
 					).toFixed(2)}</span></p>
           <p class="mb-4">Save ${deal.discountPercentage}%</p>
-          <button class="add-to-cart bg-white text-blue-500 font-bold py-2 px-4 rounded-full hover:bg-opacity-90 transition duration-300" data-id="${
+          <button class="add-to-cart bg-gray-50 text-blue-500 font-bold py-2 px-4 rounded-full hover:bg-opacity-90 transition duration-300" data-id="${
 						deal.product.id
 					}">Add to Cart</button>
         </div>
@@ -689,8 +689,8 @@ function renderDailyDeals() {
 function renderProfilePage() {
 	const isEditing = state.isEditingProfile;
 	return `
-    <h1 class="text-3xl font-bold mb-6 dark:text-white">Your Profile</h1>
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h1 class="text-3xl font-bold mb-6 dark:text-gray-50">Your Profile</h1>
+    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-6">
       <form id="profile-form" class="space-y-4">
         ${Object.entries(state.user)
 					.map(([key, value]) => {
@@ -711,7 +711,7 @@ function renderProfilePage() {
                      name="${key}" 
                      value="${value}" 
                      ${!isEditing ? "readonly" : ""}
-                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
             </div>
           `;
 					})
@@ -720,7 +720,7 @@ function renderProfilePage() {
           <label for="profile-gender" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Gender</label>
           <select id="profile-gender" name="gender" ${
 						!isEditing ? "disabled" : ""
-					} class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+					} class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
             <option value="">Prefer not to say</option>
             <option value="male" ${
 							state.user.gender === "male" ? "selected" : ""
@@ -755,8 +755,8 @@ function renderProfilePage() {
 						isEditing
 							? `
             <div class="mt-2">
-              <input type="text" id="new-preference" placeholder="Add new preference" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-              <button type="button" onclick="addPreference()" class="mt-2 bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-300">Add</button>
+              <input type="text" id="new-preference" placeholder="Add new preference" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
+              <button type="button" onclick="addPreference()" class="mt-2 bg-blue-500 text-gray-50 py-1 px-3 rounded-md hover:bg-blue-600 transition duration-300">Add</button>
             </div>
           `
 							: ""
@@ -767,11 +767,11 @@ function renderProfilePage() {
         ${
 					isEditing
 						? `
-          <button onclick="saveProfileChanges()" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Save Changes</button>
+          <button onclick="saveProfileChanges()" class="bg-blue-500 text-gray-50 py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Save Changes</button>
           <button onclick="cancelProfileEdit()" class="bg-gray-300 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-400 transition duration-300">Cancel</button>
         `
 						: `
-          <button onclick="editProfile()" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Edit Profile</button>
+          <button onclick="editProfile()" class="bg-blue-500 text-gray-50 py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Edit Profile</button>
         `
 				}
       </div>
@@ -875,7 +875,7 @@ function debounce(func, delay) {
 
 function showNotification(message, type = "info") {
 	const notification = document.createElement("div");
-	notification.className = `fixed bottom-4 right-4 p-4 rounded-lg text-white ${
+	notification.className = `fixed bottom-4 right-4 p-4 rounded-lg text-gray-50 ${
 		type === "error"
 			? "bg-red-500"
 			: type === "success"
@@ -1041,13 +1041,13 @@ function editCartItem(productId) {
 	if (!product) return;
 
 	const editForm = `
-    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg max-w-md w-full">
-        <h2 class="text-2xl font-bold mb-4 dark:text-white">Edit Item</h2>
+    <div class="fixed inset-0 bg-gray-950 bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg max-w-md w-full">
+        <h2 class="text-2xl font-bold mb-4 dark:text-gray-50">Edit Item</h2>
         <form id="edit-cart-item-form" class="space-y-4">
           <div>
             <label for="edit-size" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Size</label>
-            <select id="edit-size" name="size" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <select id="edit-size" name="size" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
               ${product.sizes
 								.map(
 									(size) =>
@@ -1060,7 +1060,7 @@ function editCartItem(productId) {
           </div>
           <div>
             <label for="edit-color" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Color</label>
-            <select id="edit-color" name="color" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <select id="edit-color" name="color" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
               ${product.colors
 								.map(
 									(color) =>
@@ -1075,11 +1075,11 @@ function editCartItem(productId) {
             <label for="edit-quantity" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Quantity</label>
             <input type="number" id="edit-quantity" name="quantity" value="${
 							item.quantity
-						}" min="1" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+						}" min="1" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-gray-50">
           </div>
           <div class="flex justify-end space-x-2">
             <button type="button" onclick="closeEditForm()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-500 rounded-md">Cancel</button>
-            <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 rounded-md">Save Changes</button>
+            <button type="submit" class="px-4 py-2 text-sm font-medium text-gray-50 bg-blue-500 hover:bg-blue-600 rounded-md">Save Changes</button>
           </div>
         </form>
       </div>
