@@ -252,8 +252,8 @@ function toggleMobileMenu() {
 // Render cart
 function renderCart() {
 	const cartContent = `
-    <h1 class="text-3xl font-bold mb-6 dark:text-white">Your Cart</h1>
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h1 class="text-3xl font-bold mb-6 dark:text-gray-50">Your Cart</h1>
+    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg shadow-md p-6">
       ${
 				state.cart.length > 0
 					? renderCartItems()
@@ -263,12 +263,12 @@ function renderCart() {
 				state.cart.length > 0
 					? `
         <div class="mt-6 flex justify-between items-center">
-          <span class="text-xl font-bold dark:text-white">Total:</span>
-          <span class="text-xl font-bold dark:text-white">$${calculateCartTotal(
+          <span class="text-xl font-bold dark:text-gray-50">Total:</span>
+          <span class="text-xl font-bold dark:text-gray-50">$${calculateCartTotal(
 						state.cart
 					).toFixed(2)}</span>
         </div>
-        <button onclick="handleCheckout()" class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
+        <button onclick="handleCheckout()" class="mt-4 w-full bg-blue-500 text-gray-50 py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">
           Proceed to Checkout
         </button>
       `
@@ -290,7 +290,7 @@ function renderCartItems() {
 				item.title
 			}" class="w-16 h-16 object-cover rounded-md mr-4">
         <div>
-          <h3 class="font-semibold dark:text-white">${item.title}</h3>
+          <h3 class="font-semibold dark:text-gray-50">${item.title}</h3>
           <p class="text-gray-600 dark:text-gray-300">Size: ${
 						item.size || "N/A"
 					}, Color: ${item.color || "N/A"}</p>
