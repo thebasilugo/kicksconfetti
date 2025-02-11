@@ -340,6 +340,9 @@ function handleDocumentClick(event) {
 		addToCart(state, productId);
 		updateCartBadge();
 		showNotification("Item added to cart", "success");
+		if (state.currentPage === "cart") {
+			renderCart();
+		}
 	} else if (event.target.closest(".add-to-wishlist")) {
 		const productId = event.target.closest(".add-to-wishlist").dataset.id;
 		const isInWishlist = state.wishlist.some(
