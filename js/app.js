@@ -860,6 +860,13 @@ async function init() {
 		state.darkMode = true;
 	}
 	updateDarkModeButton();
+
+	// Initialize cart from localStorage if available
+	const savedCart = localStorage.getItem("cart");
+	if (savedCart) {
+		state.cart = JSON.parse(savedCart);
+		updateCartBadge();
+	}
 }
 
 // Update footer year dynamically
