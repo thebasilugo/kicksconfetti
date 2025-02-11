@@ -910,6 +910,7 @@ function addToCart(state, productId) {
 		} else {
 			state.cart.push({ ...product, quantity: 1 });
 		}
+		saveCartToLocalStorage();
 		return true;
 	}
 	return false;
@@ -921,6 +922,7 @@ function removeFromCart(state, productId) {
 	);
 	if (index !== -1) {
 		state.cart.splice(index, 1);
+		saveCartToLocalStorage();
 		return true;
 	}
 	return false;
@@ -930,6 +932,7 @@ function increaseCartItemQuantity(state, productId) {
 	const item = state.cart.find((item) => item.id.toString() === productId);
 	if (item) {
 		item.quantity++;
+		saveCartToLocalStorage();
 		return true;
 	}
 	return false;
@@ -943,6 +946,7 @@ function decreaseCartItemQuantity(state, productId) {
 		} else {
 			removeFromCart(state, productId);
 		}
+		saveCartToLocalStorage();
 		return true;
 	}
 	return false;
@@ -1129,5 +1133,10 @@ function updateCartItem(productId, updates) {
 	);
 	if (itemIndex !== -1) {
 		state.cart[itemIndex] = { ...state.cart[itemIndex], ...updates };
+		saveCartToLocalStorage();
 	}
+}
+
+function saveCartToLocalStorage() {
+	localStorage.setItem("cart", JSON.stringify(state.cart));
 }
